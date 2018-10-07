@@ -4,7 +4,7 @@
   connection: local
   gather_facts: False
   vars:
-    stack_name: pan-transit
+    stackname: pan-transit
     region: eu-west-1
     owner: mghali
     keyname: pan-key.pem
@@ -14,7 +14,7 @@
   # Basic task example
     - name: launch ansible cloudformation example
       cloudformation:
-        stack_name: "ansible-cloudformation-{{ pan-transit }}"
+        stack_name: "ansible-cloudformation-{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
