@@ -70,4 +70,4 @@
           Stack: "pan-Transit-VPC-cloudformation-template"
 
     #- name: Configure PALo PAVM1 
-    #  command: "python ../scripts/configure-network.py {{ Gateway1 }} {{ Mgmt1PrivIp }}"
+    #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
