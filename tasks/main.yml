@@ -4,7 +4,7 @@
   connection: local
   gather_facts: False
   vars:
-    stackname: pan-Transit
+    stackname: pan_Transit
     region: eu-west-1
     owner: "mghali"
     keyname: "stack-deploy"
@@ -28,7 +28,7 @@
   # Basic task example
     - name: Create bootstrap bucket for PAN VMs
       cloudformation:
-        stack_name: "ansible-cloudformation-vm-bootstap-bucket-{{ stackname }}"
+        stack_name: "ansible_cloudformation_vm_bootstap_bucket_{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
@@ -46,7 +46,7 @@
 
     - name: launch Transit VPC cloudformation template
       cloudformation:
-        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
+        stack_name: "ansible_cloudformation_VPC_{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
@@ -70,13 +70,13 @@
           Stack: "pan-Transit-VPC-cloudformation-template"
     - name: get outputs
       cloudformation_facts:
-        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
+        stack_name: "ansible_cloudformation_VPC_{{ stackname }}"
         region: "{{ region }}"
       register: my_stack
 
     - name: get outputs
       debug:
-        msg: "{{ my_stack.ansible_facts.cloudformation.ansible-cloudformation-VPC-pan-Transit.stack_outputs }}"
+        msg: "{{ my_stack.ansible_facts.cloudformation.ansible_cloudformation_VPC_pan_Transit.stack_outputs }}"
         #msg: "{{ my_stack }}"
     #- name: Configure PALo PAVM1 
     #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
