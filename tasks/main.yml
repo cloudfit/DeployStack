@@ -46,7 +46,7 @@
 
     - name: launch Transit VPC cloudformation template
       cloudformation:
-        stack_name: "ansible_cloudformation_VPC"
+        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
@@ -76,7 +76,7 @@
 
     - name: get outputs
       debug:
-        msg: "{{ my_stack.ansible_facts.cloudformation.ansible_cloudformation_VPC_pan_Transit.stack_outputs }}"
-        #msg: "{{ my_stack }}"
+        #msg: "{{ my_stack.ansible_facts.cloudformation.ansible_cloudformation_VPC_pan_Transit.stack_outputs }}"
+        msg: "{{ my_stack }}"
     #- name: Configure PALo PAVM1 
     #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
