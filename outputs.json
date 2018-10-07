@@ -1,0 +1,132 @@
+ok: [localhost] => {
+    "msg": {
+        "ansible_facts": {
+            "cloudformation": {
+                "ansible-cloudformation-VPC-pan-Transit": {
+                    "stack_description": {
+                        "capabilities": [
+                            "CAPABILITY_IAM",
+                            "CAPABILITY_NAMED_IAM"
+                        ],
+                        "creation_time": "2018-10-07T19:54:27.944000+00:00",
+                        "description": "Transit VPC: This template creates a dedicated transit VPC with Palo Alto for routing traffic. ***NOTE*** You must first subscribe to the appropriate Palo Alto marketplace BYOL or License Included AMI from the AWS Marketplace before you launch this template.",
+                        "disable_rollback": false,
+                        "enable_termination_protection": false,
+                        "notification_arns": [],
+                        "outputs": [
+                            {
+                                "description": "S3 bucket for storing VPN configuration information.",
+                                "output_key": "ConfigS3Bucket",
+                                "output_value": "ansible-cloudformation-vpc-pan-vpnconfigs3bucket-1800mhmmdtu9n"
+                            },
+                            {
+                                "description": "IP Address for PAVM2",
+                                "output_key": "PAVM2",
+                                "output_value": "18.202.199.175"
+                            },
+                            {
+                                "description": "IP Address for PAVM1",
+                                "output_key": "PAVM1",
+                                "output_value": "34.253.62.206"
+                            }
+                        ],
+                        "parameters": [
+                            {
+                                "parameter_key": "LicenseModel",
+                                "parameter_value": "LicenseIncluded"
+                            },
+                            {
+                                "parameter_key": "AccountId",
+                                "parameter_value": "321726395275"
+                            },
+                            {
+                                "parameter_key": "Mgmt1PrivIp",
+                                "parameter_value": "10.100.2.100"
+                            },
+                            {
+                                "parameter_key": "paBootstrapBucketName",
+                                "parameter_value": "pan-bootstrap-new"
+                            },
+                            {
+                                "parameter_key": "TerminationProtection",
+                                "parameter_value": "No"
+                            },
+                            {
+                                "parameter_key": "BgpAsn",
+                                "parameter_value": "64115"
+                            },
+                            {
+                                "parameter_key": "KeyName",
+                                "parameter_value": "stack-deploy"
+                            },
+                            {
+                                "parameter_key": "Mgmt2PrivIp",
+                                "parameter_value": "10.100.4.100"
+                            },
+                            {
+                                "parameter_key": "VpcCidr",
+                                "parameter_value": "10.100.1.0/16"
+                            },
+                            {
+                                "parameter_key": "PubSubnet11",
+                                "parameter_value": "10.100.1.0/24"
+                            },
+                            {
+                                "parameter_key": "PubSubnet22",
+                                "parameter_value": "10.100.4.0/24"
+                            },
+                            {
+                                "parameter_key": "PubSubnet12",
+                                "parameter_value": "10.100.2.0/24"
+                            },
+                            {
+                                "parameter_key": "PubSubnet21",
+                                "parameter_value": "10.100.3.0/24"
+                            },
+                            {
+                                "parameter_key": "PAVMType",
+                                "parameter_value": "t2.micro"
+                            }
+                        ],
+                        "rollback_configuration": {},
+                        "stack_id": "arn:aws:cloudformation:eu-west-1:321726395275:stack/ansible-cloudformation-VPC-pan-Transit/f00bc480-ca69-11e8-97a0-50a6863404d2",
+                        "stack_name": "ansible-cloudformation-VPC-pan-Transit",
+                        "stack_status": "CREATE_COMPLETE",
+                        "tags": [
+                            {
+                                "key": "Stack",
+                                "value": "pan-Transit-VPC-cloudformation-template"
+                            }
+                        ]
+                    },
+                    "stack_outputs": {
+                        "ConfigS3Bucket": "ansible-cloudformation-vpc-pan-vpnconfigs3bucket-1800mhmmdtu9n",
+                        "PAVM1": "34.253.62.206",
+                        "PAVM2": "18.202.199.175"
+                    },
+                    "stack_parameters": {
+                        "AccountId": "321726395275",
+                        "BgpAsn": "64115",
+                        "KeyName": "stack-deploy",
+                        "LicenseModel": "LicenseIncluded",
+                        "Mgmt1PrivIp": "10.100.2.100",
+                        "Mgmt2PrivIp": "10.100.4.100",
+                        "PAVMType": "t2.micro",
+                        "PubSubnet11": "10.100.1.0/24",
+                        "PubSubnet12": "10.100.2.0/24",
+                        "PubSubnet21": "10.100.3.0/24",
+                        "PubSubnet22": "10.100.4.0/24",
+                        "TerminationProtection": "No",
+                        "VpcCidr": "10.100.1.0/16",
+                        "paBootstrapBucketName": "pan-bootstrap-new"
+                    },
+                    "stack_tags": {
+                        "Stack": "pan-Transit-VPC-cloudformation-template"
+                    }
+                }
+            }
+        },
+        "changed": false,
+        "failed": false
+    }
+}
