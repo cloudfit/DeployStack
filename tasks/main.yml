@@ -70,7 +70,7 @@
           Stack: "pan-Transit-VPC-cloudformation-template"
     - name: get outputs
       cloudformation_facts:
-        stack_name: "ansible_cloudformation_VPC_{{ stackname }}"
+        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
         region: "{{ region }}"
       register: my_stack
 
