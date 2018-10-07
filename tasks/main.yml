@@ -35,4 +35,26 @@
           Stack: "ansible-cloudformation"
 
     - name: upload pootstraping files to paBootstrapBucket 
-      command: "aws s3 cp --recursive ../files/bootstrap  s3://{{ pan_bootstrap }}"
+      command: "aws s3 cp --region {{ region }} --recursive ../files/bootstrap  s3://{{ pan_bootstrap }}/"
+
+    - name: launch Transit VPC cloudformation template
+      cloudformation:
+        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
+        state: "present"
+        region: "{{ region }}"
+        #disable_rollback: true
+        template: "../files/pan-transit-vpc-v3.json"
+        template_parameters:
+          paBootstrapBucketname: "{{ pan_bootstrap }}"
+          TerminationProtection: "{{ TerminationProtection }}"
+          BgpAsn: "{{ BgpAsn }}"
+          VpcCidr: "{{ VpcCidr }}"
+          PubSubnet11: "{{ PubSubnet11 }}"
+          PubSubnet12: "{{ PubSubnet12 }}"
+          PubSubnet21: "{{ PubSubnet21 }}"
+          PubSubnet22: "{{ PubSubnet22 }}"
+          PAVMType: "{{ PAVMType }}"
+          LicenseModel: "{{ LicenseModel }}"
+          AccountId: "{{ AccountId }}"
+        tags:
+          Stack: "pan-Transit-VPC-cloudformation-template"
