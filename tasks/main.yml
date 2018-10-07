@@ -45,6 +45,7 @@
         #disable_rollback: true
         template: "../files/pan-transit-vpc-v3.json"
         template_parameters:
+          KeyName: "{{ keyname }}"
           paBootstrapBucketName: "{{ pan_bootstrap }}"
           TerminationProtection: "{{ TerminationProtection }}"
           BgpAsn: "{{ BgpAsn }}"

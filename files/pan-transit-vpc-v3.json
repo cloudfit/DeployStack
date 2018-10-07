@@ -9,7 +9,7 @@
     "KeyName":{
       "Description":"Name of an existing EC2 KeyPair to enable SSH access to the instances",
       "Type":"AWS::EC2::KeyPair::KeyName",
-      "Default":"Lab"
+      "Default":"pan-key.pem"
     },
     "TerminationProtection":{
       "Description":"Enable termination protection on the PAVM EC2 instances to avoid accidential PAVM termination?",
