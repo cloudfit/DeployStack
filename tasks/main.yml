@@ -68,6 +68,12 @@
           AccountId: "{{ AccountId }}"
         tags:
           Stack: "pan-Transit-VPC-cloudformation-template"
-
+    - name: get outputs
+      cloudformation_facts:
+        stack_name: "{{ stack_name }}"
+      register: my_stack
+    - name: get outputs
+      debug:
+        msg: "{{ my_stack.ansible_facts.cloudformation[stack_name].stack_outputs }}"
     #- name: Configure PALo PAVM1 
     #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
