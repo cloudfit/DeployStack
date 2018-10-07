@@ -76,7 +76,7 @@
 
     - name: get outputs
       debug:
-        msg: "{{ my_stack.ansible_facts.cloudformation["ansible-cloudformation-VPC-'{{ stackname }}'].stack_outputs }}"
+        msg: "{{ my_stack.ansible_facts.cloudformation["ansible-cloudformation-VPC-{{ stackname }}].stack_outputs }}"
         #msg: "{{ my_stack }}"
     #- name: Configure PALo PAVM1 
     #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
