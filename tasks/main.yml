@@ -20,6 +20,6 @@
         #disable_rollback: true
         template: "../files/prerequest.yml"
         template_parameters:
-          paBootstrapBucketname: "{{ pan-bootstrap }}"
+          paBootstrapBucketname: "{{ pan_bootstrap }}"
         tags:
           Stack: "ansible-cloudformation"
