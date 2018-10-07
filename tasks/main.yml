@@ -35,4 +35,4 @@
           Stack: "ansible-cloudformation"
 
     - name: upload pootstraping files to paBootstrapBucket 
-      command: "aws s3 cp --recursive ../files/bootstrap  s3://{{ paBootstrapBucket }}"
+      command: "aws s3 cp --recursive ../files/bootstrap  s3://{{ pan_bootstrap }}"
