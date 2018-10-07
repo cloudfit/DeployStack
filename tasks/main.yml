@@ -70,7 +70,7 @@
           Stack: "pan-Transit-VPC-cloudformation-template"
     - name: get outputs
       cloudformation_facts:
-        stack_name: "{{ stack_name }}"
+        stack_name: "ansible-cloudformation-vm-bootstap-bucket-{{ stackname }}"
       register: my_stack
     - name: get outputs
       debug:
