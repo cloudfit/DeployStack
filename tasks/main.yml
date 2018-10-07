@@ -4,7 +4,7 @@
   connection: local
   gather_facts: False
   vars:
-    stackname: pan_Transit
+    stackname: pan-Transit
     region: eu-west-1
     owner: "mghali"
     keyname: "stack-deploy"
@@ -28,7 +28,7 @@
   # Basic task example
     - name: Create bootstrap bucket for PAN VMs
       cloudformation:
-        stack_name: "ansible_cloudformation_vm_bootstap_bucket_{{ stackname }}"
+        stack_name: "ansible-cloudformation-vm-bootstap-bucket-{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
