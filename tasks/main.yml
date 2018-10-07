@@ -7,7 +7,7 @@
     stackname: pan-Transit
     region: eu-west-1
     owner: "mghali"
-    keyname: "pan-key.pem"
+    keyname: "stack-deploy.pem"
     Email_notification: "test@example.org"
     TerminationProtection: "Yes"
     BgpAsn: "64115"
