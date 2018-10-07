@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    stack_name: pan-transit
+    region: eu-west-1
+    owner: mghali
+    keyname: pan-key.pem
+    Email_notification: test@example.org
