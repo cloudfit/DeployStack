@@ -17,7 +17,7 @@
     PubSubnet21: "10.100.3.0/24"
     PubSubnet22: "10.100.4.0/24"
     PAVMType: "t2.micro"
-    LicenseModel: "PYEG"
+    LicenseModel: "LicenseIncluded"
     AccountId: "321726395275" 
 
   tasks:
