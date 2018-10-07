@@ -4,17 +4,27 @@
   connection: local
   gather_facts: False
   vars:
-    stackname: pan-transit
+    stackname: pan-Transit
     region: eu-west-1
-    owner: mghali
-    keyname: pan-key.pem
-    Email_notification: test@example.org
+    owner: "mghali"
+    keyname: "pan-key.pem"
+    Email_notification: "test@example.org"
+    TerminationProtection: "Yes"
+    BgpAsn: "64115"
+    VpcCidr: "10.100.1.0/16"
+    PubSubnet11: "10.100.1.0/24"
+    PubSubnet12: "10.100.2.0/24"
+    PubSubnet21: "10.100.3.0/24"
+    PubSubnet22: "10.100.4.0/24"
+    PAVMType: "t2.micro"
+    LicenseModel: "PYEG"
+    AccountId: "321726395275" 
 
   tasks:
   # Basic task example
-    - name: launch ansible cloudformation example
+    - name: Create bootstrap bucket for PAN VMs
       cloudformation:
-        stack_name: "ansible-cloudformation-{{ stackname }}"
+        stack_name: "ansible-cloudformation-vm-bootstap-bucket-{{ stackname }}"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
@@ -23,3 +33,25 @@
           paBootstrapBucketname: "{{ pan_bootstrap }}"
         tags:
           Stack: "ansible-cloudformation"
+
+    - name: launch Transit VPC cloudformation template
+      cloudformation:
+        stack_name: "ansible-cloudformation-VPC-{{ stackname }}"
+        state: "present"
+        region: "{{ region }}"
+        #disable_rollback: true
+        template: "../files/pan-transit-vpc-v3.json"
+        template_parameters:
+          paBootstrapBucketname: "{{ pan_bootstrap }}"
+          TerminationProtection: "{{ TerminationProtection }}"
+          BgpAsn: "{{ BgpAsn }}"
+          VpcCidr: "{{ VpcCidr }}"
+          PubSubnet11: "{{ PubSubnet11 }}"
+          PubSubnet12: "{{ PubSubnet12 }}"
+          PubSubnet21: "{{ PubSubnet21 }}"
+          PubSubnet22: "{{ PubSubnet22 }}"
+          PAVMType: "{{ PAVMType }}"
+          LicenseModel: "{{ LicenseModel }}"
+          AccountId: "{{ AccountId }}"
+        tags:
+          Stack: "pan-Transit-VPC-cloudformation-template"

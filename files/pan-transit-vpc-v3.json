@@ -2,14 +2,6 @@
   "AWSTemplateFormatVersion":"2010-09-09",
   "Description":"Transit VPC: This template creates a dedicated transit VPC with Palo Alto for routing traffic. ***NOTE*** You must first subscribe to the appropriate Palo Alto marketplace BYOL or License Included AMI from the AWS Marketplace before you launch this template.",
   "Parameters":{
-    "UserName": {
-      "Description" : "Palo Alto Login User Name",
-      "Type" : "String"
-    },
-    "Password": {
-      "Description" : "Palo Alto Login User Password",
-       "Type" : "String"
-    },
     "paBootstrapBucketName" : {
       "Description" : "Existing S3 bucket which is having PA-Bootstrap configuration",
       "Type" : "String"
@@ -27,11 +19,6 @@
         "Yes",
         "No"
       ]
-    },
-    "PreferredPathTag":{
-      "Description":"Tag to use to configure a preferred PA VPN endpoint to control traffic flow through the Transit VPC (e.g. when integrating with CPE).",
-      "Type":"String",
-      "Default":"transitvpc:preferred-path"
     },
     "BgpAsn":{
       "Description":"BGP ASN to use for Transit VPC.",
@@ -66,9 +53,9 @@
     "PAVMType":{
       "Description":"Maximum network througput required for PA instances.",
       "Type":"String",
-      "Default":"m4.xlarge",
+      "Default":"t2.micro",
       "AllowedValues":[
-        "m4.xlarge"
+        "t2.micro"
       ]
     },
     "LicenseModel":{
@@ -120,9 +107,7 @@
             "KeyName",
             "LicenseModel",
             "TerminationProtection",
-			"paBootstrapBucketName",
-			"UserName",
-			"Password"
+			"paBootstrapBucketName"
           ]
         },
         {
@@ -185,12 +170,6 @@
 		"paBootstrapBucketName":{
           "default":"paloalto Bootstrap Bucket Name"
         },
-		"UserName":{
-          "default":"paloalto UserName"
-        },
-		"Password":{
-          "default":"paloalto Password"
-        },
 		"AccountId":{
           "default":"Additional AWS Account ID (Optional)"
         }
@@ -209,7 +188,7 @@
       },
       "eu-west-1":{
         "BYOL":"ami-32fca754",
-        "LicenseIncluded":"ami-1fb1ff66"
+        "LicenseIncluded":"ami-0eafb5ee12a2cbffc"
       },
       "ap-northeast-2":{
         "BYOL":"ami-925e8ffc",
