@@ -747,7 +747,7 @@
             "Ref":"PAVMSecurityGroup"
           }
         ],
-        "PrivateIpAddress" : { "Ref":"mgmt1_priv_ip" },
+        "PrivateIpAddress" : { "Ref":"Mgmt1PrivIp" },
         "SubnetId":{
           "Ref":"VPCPubSub12"
         }
@@ -778,7 +778,7 @@
             "Ref":"PAVMSecurityGroup"
           }
         ],
-        "PrivateIpAddress" : { "Ref":"mgmt2_priv_ip" },
+        "PrivateIpAddress" : { "Ref":"Mgmt2PrivIp" },
         "SubnetId":{
           "Ref":"VPCPubSub22"
         }
