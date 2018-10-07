@@ -18,7 +18,7 @@
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
-        template: "files/prerequest.yml"
+        template: "../files/prerequest.yml"
         template_parameters:
           paBootstrapBucketname: "pan-Bootstrap"
         tags:
