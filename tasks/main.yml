@@ -73,8 +73,10 @@
         stack_name: "ansible-cloudformation-vm-bootstap-bucket-{{ stackname }}"
         region: "{{ region }}"
       register: my_stack
+
     - name: get outputs
       debug:
-        msg: "{{ my_stack.ansible_facts.cloudformation[stack_name].stack_outputs }}"
+        #msg: "{{ my_stack.ansible_facts.cloudformation[stack_name].stack_outputs }}"
+        msg: "{{ my_stack }}"
     #- name: Configure PALo PAVM1 
     #  command: "python ../scripts/configure-network.py {{ palo_node_ip }}  {{ keyname }}  {{ Gateway1 }}  {{ Mgmt1PrivIp }}"
