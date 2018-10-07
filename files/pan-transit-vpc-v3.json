@@ -128,17 +128,13 @@
             "PubSubnet12",
             "PubSubnet21",
             "PubSubnet22",
-            "BgpAsn",
-            "PreferredPathTag"
+            "BgpAsn"
           ]
         }
      ],
       "ParameterLabels":{
         "BgpAsn":{
           "default":"Transit VPC BGP ASN"
-        },
-        "PreferredPathTag":{
-          "default":"Preferred VPN Endpoint Tag Name"
         },
         "VpcCidr":{
           "default":"Transit VPC CIDR Block"
@@ -1052,12 +1048,6 @@
       "Description":"S3 bucket for storing VPN configuration information.",
       "Value":{
         "Ref":"VPNConfigS3Bucket"
-      }
-    },
-    "PreferredPathTagName":{
-      "Description":"Tag used to identify the spoke VPC preferred path.",
-      "Value":{
-        "Ref":"PreferredPathTag"
       }
     }
   }
