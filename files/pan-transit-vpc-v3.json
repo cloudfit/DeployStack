@@ -50,12 +50,12 @@
       "Type":"String",
       "Default":"200.0.2.0/24"
     },
-    "mgmt1_priv_ip":{
+    "Mgmt1PrivIp":{
       "Description":"Private Ip Address for mgmt1.",
       "Type":"String",
       "Default":"200.0.2.100"
     },  
-    "mgmt2_priv_ip":{
+    "Mgmt2PrivIp":{
       "Description":"Private Ip Address for mgmt2.",
       "Type":"String",
       "Default":"200.0.4.100"
@@ -139,8 +139,8 @@
             "PubSubnet21",
             "PubSubnet22",
             "BgpAsn",
-            "mgmt1_priv_ip",
-            "mgmt2_priv_ip"
+            "Mgmt1PrivIp",
+            "Mgmt2PrivIp"
           ]
         }
      ],
@@ -148,11 +148,11 @@
         "BgpAsn":{
           "default":"Transit VPC BGP ASN"
         },
-        "mgmt1_priv_ip":{
-          "default":"mgmt1_priv_ip"
+        "Mgmt1PrivIp":{
+          "default":"Mgmt1PrivIp"
         },
-        "mgmt2_priv_ip":{
-          "default":"mgmt2_priv_ip"
+        "Mgmt2PrivIp":{
+          "default":"Mgmt2PrivIp"
         },
         "VpcCidr":{
           "default":"Transit VPC CIDR Block"
