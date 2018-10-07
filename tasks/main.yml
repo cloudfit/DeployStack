@@ -8,3 +8,16 @@
     owner: mghali
     keyname: pan-key.pem
     Email_notification: test@example.org
+
+# Basic task example
+- name: launch ansible cloudformation example
+  cloudformation:
+    stack_name: "ansible-cloudformation-{{ pan-transit }}"
+    state: "present"
+    region: "{{ region }}"
+    #disable_rollback: true
+    template: "files/prerequest.yml"
+    template_parameters:
+      paBootstrapBucketname: "pan-Bootstrap"
+    tags:
+      Stack: "ansible-cloudformation"

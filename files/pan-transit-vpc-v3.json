@@ -80,7 +80,7 @@
         "BYOL"
       ]
     },
-	"AccountId":{
+	  "AccountId":{
       "Description":"Another AWS Account ID to authorize access to VPN Config S3 bucket (for example bucket and KMS key policies).",
       "Type":"String",
       "Default":""

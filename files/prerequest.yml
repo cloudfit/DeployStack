@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create bucket 
+Parameters:
+  paBootstrapBucketname:
+    Type: String
+    Default: pan-Bootstrap
+    Description: pan-Bootstrap bucket name
+    ConstraintDescription: must be a valid subnet string.
+Resources:
+  paBootstrapBucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      BucketName: {Ref: paBootstrapBucketname}  
+    Tags:
+      - Resource Tag
+Outputs:
+  InstanpaBootstrapBucketname:
+    Description: paBootstrap Bucket name
+    Value: !Ref paBootstrapBucket
