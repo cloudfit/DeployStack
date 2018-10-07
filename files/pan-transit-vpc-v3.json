@@ -233,7 +233,7 @@
     },
     "PAVMInstance":{
       "m4.xlarge":{
-        "Type":"m4.xlarge",
+        "Type":"t2.micro",
         "Bandwidth":"500000"
       }
     }
