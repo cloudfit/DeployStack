@@ -11,8 +11,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties: 
       BucketName: {Ref: paBootstrapBucketname}  
-    Tags:
-      - Resource Tag
+
 Outputs:
   InstanpaBootstrapBucketname:
     Description: paBootstrap Bucket name
