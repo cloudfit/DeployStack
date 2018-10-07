@@ -46,7 +46,7 @@
 
     - name: launch Transit VPC cloudformation template
       cloudformation:
-        stack_name: "ansible_cloudformation_VPC_{{ stackname }}"
+        stack_name: "ansible_cloudformation_VPC"
         state: "present"
         region: "{{ region }}"
         #disable_rollback: true
