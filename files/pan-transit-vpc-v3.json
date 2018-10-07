@@ -50,6 +50,16 @@
       "Type":"String",
       "Default":"200.0.2.0/24"
     },
+    "mgmt1_priv_ip":{
+      "Description":"Private Ip Address for mgmt1.",
+      "Type":"String",
+      "Default":"200.0.2.100"
+    },  
+    "mgmt2_priv_ip":{
+      "Description":"Private Ip Address for mgmt2.",
+      "Type":"String",
+      "Default":"200.0.4.100"
+    },  
     "PAVMType":{
       "Description":"Maximum network througput required for PA instances.",
       "Type":"String",
@@ -128,13 +138,21 @@
             "PubSubnet12",
             "PubSubnet21",
             "PubSubnet22",
-            "BgpAsn"
+            "BgpAsn",
+            "mgmt1_priv_ip",
+            "mgmt2_priv_ip"
           ]
         }
      ],
       "ParameterLabels":{
         "BgpAsn":{
           "default":"Transit VPC BGP ASN"
+        },
+        "mgmt1_priv_ip":{
+          "default":"mgmt1_priv_ip"
+        },
+        "mgmt2_priv_ip":{
+          "default":"mgmt2_priv_ip"
         },
         "VpcCidr":{
           "default":"Transit VPC CIDR Block"
@@ -729,6 +747,7 @@
             "Ref":"PAVMSecurityGroup"
           }
         ],
+        "PrivateIpAddress" : { "Ref":"mgmt1_priv_ip" },
         "SubnetId":{
           "Ref":"VPCPubSub12"
         }
@@ -759,6 +778,7 @@
             "Ref":"PAVMSecurityGroup"
           }
         ],
+        "PrivateIpAddress" : { "Ref":"mgmt2_priv_ip" },
         "SubnetId":{
           "Ref":"VPCPubSub22"
         }
@@ -804,13 +824,13 @@
           {
             "NetworkInterfaceId":{
               "Ref":"PAVMInterface11"
-            },
+            },            
             "DeviceIndex":"0"
           },
           {
             "NetworkInterfaceId":{
-              "Ref":"PAVMInterface12"
-            },
+              "Ref":"PAVMInterface12"              
+            },            
             "DeviceIndex":"1"
           }
         ],
@@ -872,7 +892,7 @@
           },
           {
             "NetworkInterfaceId":{
-              "Ref":"PAVMInterface22"
+              "Ref":"PAVMInterface22"              
             },
             "DeviceIndex":"1"
           }
