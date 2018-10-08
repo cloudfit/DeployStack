@@ -20,6 +20,7 @@ log.setLevel(logging.INFO)
 def create_paloalto_config(peer_group,vpn_connection_id):
 
     vpn_conf_file_path  = './vpn-configurations/'+vpn_connection_id
+
     f = open(vpn_conf_file_path, 'r')  # open file in append  mode
     
     for line in f: 
@@ -56,7 +57,7 @@ def pushConfig(ssh, config):
 
     log.info("Config Update complete!")
 	
-def configureVPN(role,ip,vpn_connection_id,vpn_bucket_name):
+def deleteVPN(role,ip,vpn_connection_id):
 
     print("----------------------------------------------------------------------------------------------------------")
     print("Configure VPN connection on Palo Alto Node "+ip+" using extract from AWS file : "+ vpn_connection_id+".txt")
@@ -111,7 +112,7 @@ def main():
             logging_format = '%(message)s'
         logging.basicConfig(format=logging_format, level=logging_level)
     
-    configureVPN(palo_role,palo_node_ip,vpn_connection_id)
+        deleteVPN(palo_role,palo_node_ip,vpn_connection_id)
 
 
 if __name__ == '__main__':
