@@ -234,7 +234,7 @@ def main():
     palo_role = args.role
     palo_node_ip = args.palo_node_ip
     vpn_connection_id = args.vpn_connection_id
-    vpn_bucket_name = args.vpn_backet_name
+    vpn_bucket_name = args.vpn_bucket_name
     ### Set up logger
     # Logging Levels
     # WARNING is 30

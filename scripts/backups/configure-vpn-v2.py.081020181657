@@ -53,7 +53,8 @@ def bash(vpn_connection_id,search):
 
 #Logic to create the appropriate PaloAlto configuration
 def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_name):
-    
+    #tunnel_Id+=1
+    #tunnel_Id = 5
     subprocess.check_output(['aws', 's3', 'cp', 's3://'+vpn_bucket_name+'/'+vpn_connection_id+'.txt', './vpn-connections/'])
     pre_shared_key = bash(vpn_connection_id,"pre-shared-key")
     local_address = bash(vpn_connection_id,"set local-address ip")
@@ -63,9 +64,6 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     peer_group_name = peer_group
     peer_as = bash(vpn_connection_id,"set peer-as")
 
-    vpn_conf_file_path  = './vpn-configurations/'+vpn_connection_id
-    f = open(vpn_conf_file_path, 'a+')  # open file in append  mode
-    
     config_text = []
 
     # IPSec Tunnel #1
@@ -96,6 +94,9 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('top')
 
     config_text.append('edit network virtual-router default protocol bgp')
+    #config_text.append('set router-id {}'.format(local_address))
+    #config_text.append('set enable yes')
+    #config_text.append('{}'.format(local_as[0]))
     config_text.append('edit peer-group {}'.format(peer_group_name))
     config_text.append('edit peer peer-{}-{}'.format(vpn_connection_id,1))
     config_text.append('{}'.format(peer_as[0]))
@@ -106,11 +107,6 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('set local-address interface tunnel.{}'.format(tunnel_Id))
     config_text.append('{}'.format(peer_address[1]))
     config_text.append('top')
-    
-    f.write('peer-{}-{} \n'.format(vpn_connection_id,1))
-    f.write('ipsec-{}-{} \n'.format(vpn_connection_id,tunnel_Id))
-    f.write('tunnel.{} \n'.format(tunnel_Id))
-    f.write('ike-{}-{} \n'.format(vpn_connection_id,1))
     
     # IPSec Tunnel #2
 
@@ -140,6 +136,9 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('top')
 
     config_text.append('edit network virtual-router default protocol bgp')
+    #config_text.append('set router-id {}'.format(local_address[]))
+    #config_text.append('set enable yes')
+    #config_text.append('{}'.format(local_as[1]))
     config_text.append('edit peer-group {}'.format(peer_group_name))
     config_text.append('edit peer peer-{}-{}'.format(vpn_connection_id,2))
     config_text.append('{}'.format(peer_as[1]))
@@ -151,7 +150,6 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('{}'.format(peer_address[3]))
     config_text.append('top')
 
-    f.close()
     for line in config_text: 
         print(line)
     log.debug("Conversion complete")
@@ -212,7 +210,7 @@ def configureVPN(role,ip,vpn_connection_id,vpn_bucket_name):
         connection = session.invoke_shell()		
         tunnelId = getNextTunnelId(connection)
         vpn_connection_conf = create_paloalto_config(role,vpn_connection_id,tunnelId,vpn_bucket_name)
-        #pushConfig(connection,vpn_connection_conf)
+        pushConfig(connection,vpn_connection_conf)
         session.close()            
         print("----------------------- configuration done ----------------------------") 
 
