@@ -23,11 +23,11 @@ def create_paloalto_config(peer_group,vpn_connection_id):
 
     f = open(vpn_conf_file_path, 'r')  # open file in append  mode
     
-    print(line[0])
-    print(line[1])
-    print(line[2])
-    print(line[3])
-    
+    print(f[0])
+    print(f[1])
+    print(f[2])
+    print(f[3])
+
     config_text = []   
 
     log.debug("Conversion complete")
