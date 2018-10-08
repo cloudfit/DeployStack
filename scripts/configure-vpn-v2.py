@@ -64,7 +64,7 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     peer_group_name = peer_group
     peer_as = bash(vpn_connection_id,"set peer-as")
 
-    vpn_conf_file_path  = path+'vpn-configurations/'+vpn_connection_id
+    vpn_conf_file_path  = path+'/vpn-configurations/'+vpn_connection_id
     f = open(vpn_conf_file_path, 'a+')  # open file in append  mode
     
     config_text = []
