@@ -12,7 +12,7 @@
   tasks:
   # Basic task example
     - name: Configure VPN Connection 
-      command: "python ../scripts/configure-vpn-v2.py {{palo_role}} {{palo_node_ip}} {{vpn_connection_id}} {{ vpn_bucket_name }}"
+      command: "python ../scripts/configure-vpn-v2.py {{palo_role}} {{palo_node_ip}} {{palo_node_key}} {{vpn_connection_id}} {{ vpn_bucket_name }}"
       register: outputs
     
     - name: get outputs

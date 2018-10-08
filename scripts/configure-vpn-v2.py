@@ -53,8 +53,8 @@ def bash(vpn_connection_id,search):
 
 #Logic to create the appropriate PaloAlto configuration
 def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_name):
-    
-    subprocess.check_output(['aws', 's3', 'cp', 's3://'+vpn_bucket_name+'/'+vpn_connection_id+'.txt', './vpn-connections/'])
+    path = "~/workspace/DeployStack/scripts/"
+    subprocess.check_output(['aws', 's3', 'cp', 's3://'+vpn_bucket_name+'/'+vpn_connection_id+'.txt', path+'vpn-connections/'])
     pre_shared_key = bash(vpn_connection_id,"pre-shared-key")
     local_address = bash(vpn_connection_id,"set local-address ip")
     peer_address = bash(vpn_connection_id,"set peer-address ip")
@@ -63,7 +63,7 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     peer_group_name = peer_group
     peer_as = bash(vpn_connection_id,"set peer-as")
 
-    vpn_conf_file_path  = './vpn-configurations/'+vpn_connection_id
+    vpn_conf_file_path  = path+'vpn-configurations/'+vpn_connection_id
     f = open(vpn_conf_file_path, 'a+')  # open file in append  mode
     
     config_text = []
