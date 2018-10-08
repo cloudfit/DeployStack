@@ -92,7 +92,7 @@ def deleteVPN(role,ip,vpn_connection_id):
         session.connect (ip, username="admin", pkey = privkey)
         connection = session.invoke_shell()		
         vpn_connection_conf = create_paloalto_config(role,vpn_connection_id)
-        #pushConfig(connection,vpn_connection_conf)
+        pushConfig(connection,vpn_connection_conf)
         session.close()            
         print("----------------------- configuration done ----------------------------") 
 

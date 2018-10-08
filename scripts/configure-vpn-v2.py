@@ -217,7 +217,7 @@ def configureVPN(role,ip,vpn_connection_id,vpn_bucket_name):
         connection = session.invoke_shell()		
         tunnelId = getNextTunnelId(connection)
         vpn_connection_conf = create_paloalto_config(role,vpn_connection_id,tunnelId,vpn_bucket_name)
-        #pushConfig(connection,vpn_connection_conf)
+        pushConfig(connection,vpn_connection_conf)
         session.close()            
         print("----------------------- configuration done ----------------------------") 
 
