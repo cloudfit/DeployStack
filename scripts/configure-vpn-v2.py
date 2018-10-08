@@ -200,7 +200,7 @@ def pushConfig(ssh, config):
 
     log.info("Config Update complete!")
 	
-def configureVPN(role,ip,vpn_connection_id,vpn_bucket_name):
+def configureVPN(role,ip,key,vpn_connection_id,vpn_bucket_name):
 
     print("----------------------------------------------------------------------------------------------------------")
     print("Configure VPN connection on Palo Alto Node "+ip+" using extract from AWS file : "+ vpn_connection_id+".txt")
@@ -210,7 +210,7 @@ def configureVPN(role,ip,vpn_connection_id,vpn_bucket_name):
     try:
     
         paramiko.util.log_to_file("tunnels.log")
-        privkey = paramiko.RSAKey.from_private_key_file("pan-key.pem")
+        privkey = paramiko.RSAKey.from_private_key_file(key)
         session = paramiko.SSHClient()
         session.set_missing_host_key_policy(paramiko.AutoAddPolicy)
         session.connect (ip, username="admin", pkey = privkey)
@@ -234,12 +234,14 @@ def main():
     parser.add_argument('-q', '--quiet', action='store_true', help="No output")
     parser.add_argument('role', help="Palo alto node role [Active,Passive]")
     parser.add_argument('palo_node_ip', help="Palo alto Node ip")
+    parser.add_argument('palo_node_key', help="Palo alto Node key")
     parser.add_argument('vpn_connection_id', help="AWS vpn connection id")
     parser.add_argument('vpn_bucket_name', help="AWS vpn bucket name")
     args = parser.parse_args()
     
     palo_role = args.role
     palo_node_ip = args.palo_node_ip
+    palo_node_key = args.palo_node_key
     vpn_connection_id = args.vpn_connection_id
     vpn_bucket_name = args.vpn_bucket_name
     ### Set up logger
@@ -258,7 +260,7 @@ def main():
             logging_format = '%(message)s'
         logging.basicConfig(format=logging_format, level=logging_level)
     
-    configureVPN(palo_role,palo_node_ip,vpn_connection_id,vpn_bucket_name)
+    configureVPN(palo_role,palo_node_ip,palo_node_key,vpn_connection_id,vpn_bucket_name)
 
 
 if __name__ == '__main__':
