@@ -18,9 +18,9 @@ log.setLevel(logging.INFO)
 
 #Logic to create the appropriate PaloAlto configuration
 def create_paloalto_config(peer_group,vpn_connection_id):
-    path = "~/workspace/DeployStack/scripts/"
-    
-    vpn_conf_file_path  = path+'vpn-configurations/'+vpn_connection_id
+    path = "/var/lib/jenkins/workspace/DeployStack/scripts"
+
+    vpn_conf_file_path  = path+'/vpn-configurations/'+vpn_connection_id
 
     f = open(vpn_conf_file_path, 'r')  # open file in append  mode
     fdata = [line.rstrip() for line in f]
