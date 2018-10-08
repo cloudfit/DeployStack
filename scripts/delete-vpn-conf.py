@@ -22,11 +22,11 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     vpn_conf_file_path  = './vpn-configurations/'+vpn_connection_id
 
     f = open(vpn_conf_file_path, 'r')  # open file in append  mode
-    
-    print(f[0])
-    print(f[1])
-    print(f[2])
-    print(f[3])
+    fdata = [line.rstrip() for line in f]
+    print(fdata[0])
+    print(fdata[1])
+    print(fdata[2])
+    print(fdata[3])
 
     config_text = []   
 
