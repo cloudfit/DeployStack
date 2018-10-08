@@ -25,7 +25,7 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     fdata = [line.rstrip() for line in f]
   
     config_text = []   
-
+    # Delete IPSec Tunnel #1
     config_text.append('configure')
     config_text.append('edit network virtual-router default protocol bgp')
     config_text.append('edit peer-group {}'.format(peer_group))
@@ -33,6 +33,16 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     config_text.append('delete network tunnel ipsec {}'.format(fdata[1]))  
     config_text.append('delete network interface tunnel units {}'.format(fdata[2]))
     config_text.append('delete network ike gateway {}'.format(fdata[3]))
+
+    # Delete IPSec Tunnel #2
+    config_text.append('configure')
+    config_text.append('edit network virtual-router default protocol bgp')
+    config_text.append('edit peer-group {}'.format(peer_group))
+    config_text.append('delete peer {}'.format(fdata[4]))
+    config_text.append('delete network tunnel ipsec {}'.format(fdata[5]))  
+    config_text.append('delete network interface tunnel units {}'.format(fdata[6]))
+    config_text.append('delete network ike gateway {}'.format(fdata[7]))
+
     for line in config_text: 
         print(line)
 
