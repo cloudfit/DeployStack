@@ -28,7 +28,7 @@ def create_paloalto_config(peer_group,vpn_connection_id):
 
     config_text.append('configure \n')
     config_text.append('edit network virtual-router default protocol bgp')
-    config_text.append('edit peer-group {}'.format(peer_group_name))
+    config_text.append('edit peer-group {}'.format(peer_group))
     config_text.append('delete peer {}'.format(fdata[0]))
     config_text.append('delete network tunnel ipsec {}'.format(fdata[1]))  
     config_text.append('delete network interface tunnel units {}'.format(fdata[2]))
