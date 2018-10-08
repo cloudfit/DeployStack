@@ -32,7 +32,9 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     config_text.append('edit peer-group {}'.format(peer_group))
     config_text.append('delete peer {}'.format(fdata[0]))
     config_text.append('top')
-    config_text.append('delete network tunnel ipsec {}'.format(fdata[1]))  
+    config_text.append('delete network tunnel ipsec {}'.format(fdata[1]))      
+    config_text.append('delete zone VPN network layer3 {}'.format(fdata[2]))
+    config_text.append('delete network virtual-router default interface {}'.format(fdata[2]))
     config_text.append('delete network interface tunnel units {}'.format(fdata[2]))
     config_text.append('delete network ike gateway {}'.format(fdata[3]))
 
@@ -42,6 +44,8 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     config_text.append('delete peer {}'.format(fdata[4]))
     config_text.append('top')
     config_text.append('delete network tunnel ipsec {}'.format(fdata[5]))  
+    config_text.append('delete zone VPN network layer3 {}'.format(fdata[6]))
+    config_text.append('delete network virtual-router default interface {}'.format(fdata[6]))
     config_text.append('delete network interface tunnel units {}'.format(fdata[6]))
     config_text.append('delete network ike gateway {}'.format(fdata[7]))
 
