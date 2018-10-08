@@ -40,7 +40,8 @@ def getNextTunnelId(ssh):
 
 def bash(vpn_connection_id,search):
         result = []
-        vpn_config_file = "./vpn-connections/"+vpn_connection_id+".txt"
+        path = "~/workspace/DeployStack/scripts"
+        vpn_config_file = path+"/vpn-connections/"+vpn_connection_id+".txt"
 	content = open(vpn_config_file, 'r')
 	content.seek(0)
 	for line in content:
@@ -53,8 +54,8 @@ def bash(vpn_connection_id,search):
 
 #Logic to create the appropriate PaloAlto configuration
 def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_name):
-    path = "~/workspace/DeployStack/scripts/"
-    subprocess.check_output(['aws', 's3', 'cp', 's3://'+vpn_bucket_name+'/'+vpn_connection_id+'.txt', path+'vpn-connections/'])
+    path = "~/workspace/DeployStack/scripts:"
+    subprocess.check_output(['aws', 's3', 'cp', 's3://'+vpn_bucket_name+'/'+vpn_connection_id+'.txt', path+'/vpn-connections/'])
     pre_shared_key = bash(vpn_connection_id,"pre-shared-key")
     local_address = bash(vpn_connection_id,"set local-address ip")
     peer_address = bash(vpn_connection_id,"set peer-address ip")
