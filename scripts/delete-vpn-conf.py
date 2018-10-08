@@ -49,6 +49,11 @@ def create_paloalto_config(peer_group,vpn_connection_id):
     config_text.append('delete network interface tunnel units {}'.format(fdata[6]))
     config_text.append('delete network ike gateway {}'.format(fdata[7]))
 
+    f.close()
+
+    os.remove(vpn_conf_file_path) 
+    os.rename(vpn_conf_file_path, vpn_conf_file_path+".deleted")
+    
     for line in config_text: 
         print(line)
 
