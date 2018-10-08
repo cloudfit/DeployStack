@@ -23,9 +23,11 @@ def create_paloalto_config(peer_group,vpn_connection_id):
 
     f = open(vpn_conf_file_path, 'r')  # open file in append  mode
     
-    for line in f: 
-        print(line)
-
+    print(line[0])
+    print(line[1])
+    print(line[2])
+    print(line[3])
+    
     config_text = []   
 
     log.debug("Conversion complete")
@@ -37,9 +39,8 @@ def pushConfig(ssh, config):
     
     stime = time.time()
     for line in config:
-        if line == "WAIT":
-            ssh.send(line+'\n')
-            log.info("%s", line)
+        ssh.send(line+'\n')
+        log.info("%s", line)
     
     log.info("Saving backup config...")
     ssh.send('save config to AWS_config.txt\n\n\n\n\n')
@@ -96,11 +97,6 @@ def main():
     palo_role = args.role
     palo_node_ip = args.palo_node_ip
     vpn_connection_id = args.vpn_connection_id
-    ### Set up logger
-    # Logging Levels
-    # WARNING is 30
-    # INFO is 20
-    # DEBUG is 10
 
     if args.verbose is None:
         args.verbose = 0
@@ -113,7 +109,6 @@ def main():
         logging.basicConfig(format=logging_format, level=logging_level)
     
         deleteVPN(palo_role,palo_node_ip,vpn_connection_id)
-
 
 if __name__ == '__main__':
     main()

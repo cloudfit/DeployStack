@@ -107,10 +107,10 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('{}'.format(peer_address[1]))
     config_text.append('top')
     
-    f.write('peer-{}-{} \n'.format(vpn_connection_id,1))
-    f.write('ipsec-{}-{} \n'.format(vpn_connection_id,tunnel_Id))
-    f.write('tunnel.{} \n'.format(tunnel_Id))
-    f.write('ike-{}-{} \n'.format(vpn_connection_id,1))
+    f.write('peer-{}-{}'.format(vpn_connection_id,1))
+    f.write('ipsec-{}-{}'.format(vpn_connection_id,tunnel_Id))
+    f.write('tunnel.{}'.format(tunnel_Id))
+    f.write('ike-{}-{}'.format(vpn_connection_id,1))
     
     # IPSec Tunnel #2
 
@@ -151,10 +151,10 @@ def create_paloalto_config(peer_group,vpn_connection_id,tunnel_Id,vpn_bucket_nam
     config_text.append('{}'.format(peer_address[3]))
     config_text.append('top')
 
-    f.write('peer-{}-{} \n'.format(vpn_connection_id,2))
-    f.write('ipsec-{}-{} \n'.format(vpn_connection_id,tunnel_Id))
-    f.write('tunnel.{} \n'.format(tunnel_Id))
-    f.write('ike-{}-{} \n'.format(vpn_connection_id,2))
+    f.write('peer-{}-{}'.format(vpn_connection_id,2))
+    f.write('ipsec-{}-{}'.format(vpn_connection_id,tunnel_Id))
+    f.write('tunnel.{}'.format(tunnel_Id))
+    f.write('ike-{}-{}'.format(vpn_connection_id,2))
 
     f.close()
     for line in config_text: 
